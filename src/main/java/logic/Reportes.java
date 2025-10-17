@@ -122,14 +122,14 @@ public class Reportes {
     }
 
     /**
-     * 3. USAR tu función get_detalle_creditos_socio
+     * 3. USAR tu función obtener_detalle_creditos_socio
      */
     public static void mostrarDetalleSocio(int nroSocio) {
         System.out.println("\n=== DETALLE CRÉDITOS SOCIO " + nroSocio + " (FUNCIÓN) ===");
 
         try (Connection conn = ConexionOracle.getConnection()) {
 
-            CallableStatement cs = conn.prepareCall("{? = call get_detalle_creditos_socio(?)}");
+            CallableStatement cs = conn.prepareCall("{? = call obtener_detalle_creditos_socio(?)}");
             cs.registerOutParameter(1, Types.REF_CURSOR);
             cs.setInt(2, nroSocio);
             cs.execute();
